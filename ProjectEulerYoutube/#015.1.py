@@ -12,7 +12,7 @@ def main(x, y):
 		return(main(x-1,y) + main(x,y-1))
 
 
-n=20
+n = 100
 print(main(n,n))
 print(time.time()-start_time)
 print(main.cache_info())
