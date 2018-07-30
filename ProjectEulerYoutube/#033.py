@@ -1,5 +1,6 @@
 # Digit cancelling fractions
 
+
 def cancel_digits(numerator, denominator):
     list_num = list(str(numerator))
     list_den = list(str(denominator))
@@ -10,6 +11,7 @@ def cancel_digits(numerator, denominator):
     numerator = int(''.join(list_num))
     denominator = int(''.join(list_den))
     return numerator, denominator
+
 
 def main():
     total = 1
@@ -25,7 +27,6 @@ def main():
             except:
                 pass
     print(total)
-
 
 
 main()
