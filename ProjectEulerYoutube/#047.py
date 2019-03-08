@@ -18,57 +18,35 @@ def find_next_prime(prime_list):
 
 
 def find_prime_factorisation(n, prime_list=[2,3]):
-    while(n**0.5>prime_list[-1]):
+    while(n**0.5+1>prime_list[-1]):
         prime_list = find_next_prime(prime_list)
     prime_factors = []
     while(n > 1):
+        _in = n
         for prime in prime_list:
             while(n % prime == 0):
                 prime_factors.append(prime)
                 n /= prime
+        if _in == n:
+            prime_factors.append(n)
+            n /= n
     return(prime_factors)
-
-
-def group_factorisation(factors):
-    factors_dict = {}
-    for factor in factors:
-        if factor in factors_dict.keys():
-            factors_dict[factor] += 1
-        else:
-            factors_dict[factor] = 1
-    return(factors_dict)
 
 
 def main():
     x = 1
     while True:
-        prime_factors_1 = group_factorisation(find_prime_factorisation(x))
-        prime_factors_2 = group_factorisation(find_prime_factorisation(x+1))
-        prime_factors_3 = group_factorisation(find_prime_factorisation(x+2))
-        prime_factors_4 = group_factorisation(find_prime_factorisation(x+3))
-        failed = False
-        if not failed:
-            for key, value in prime_factors_1.items():
-                if key in prime_factors_2 and value == prime_factors_2[key]:
-                    failed = True
-                elif key in prime_factors_3 and value == prime_factors_3[key]:
-                    failed = True
-                elif key in prime_factors_4 and value == prime_factors_4[key]:
-                    failed = True
-        if not failed:
-            for key, value in prime_factors_2.items():
-                if key in prime_factors_3 and value == prime_factors_3[key]:
-                    failed = True
-                elif key in prime_factors_4 and value == prime_factors_4[key]:
-                    failed = True
-        if not failed:
-            for key, value in prime_factors_3.items():
-                if key in prime_factors_4 and value == prime_factors_4[key]:
-                    failed = True
-        if not failed:
-            print("success, our numbers are {}, {}, {} and {}. The factors were {}, {}, {} and {}".format(x, x+1, x+2, x+3, prime_factors_1, prime_factors_2, prime_factors_3, prime_factors_4))
+        passed_tests = True
+        prime_factors = [find_prime_factorisation(x), find_prime_factorisation(x+1), find_prime_factorisation(x+2), find_prime_factorisation(x+3)]
+        # prime_factors = [find_prime_factorisation(x), find_prime_factorisation(x+1), find_prime_factorisation(x+2)]
+        for factor_list in prime_factors:
+            if len(set(factor_list)) != 4:
+                passed_tests = False
+        if passed_tests:
             break
         x += 1
+    print(x)
+    print(prime_factors)
 
 
 main()
