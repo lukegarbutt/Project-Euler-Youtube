@@ -2,7 +2,7 @@
 import time
 
 def main():
-    max_prime = 10000000
+    max_prime = 10_000_000
     sieve = [True for i in range(max_prime)]
     sieve[0:1] = [False, False]
     x = 0

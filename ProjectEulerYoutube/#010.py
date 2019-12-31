@@ -4,7 +4,7 @@ import time
 
 def main():
     start_time = time.time()
-    number_prime_to_find_up_to = 10000000
+    number_prime_to_find_up_to = 10_000_000
     x = 3
     list_of_primes = [2]
 
