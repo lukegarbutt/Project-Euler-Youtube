@@ -22,4 +22,5 @@ def main():
                 if sorted(list(str(prime))) == sorted(list(str(prime_2))) == sorted(list(str(prime_3))):
                     print(str(prime) + str(prime_2) + str(prime_3))
 
-main()
+if __name__ == '__main__':
+    main()
